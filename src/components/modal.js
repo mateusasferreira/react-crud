@@ -12,9 +12,8 @@ function Modal() {
   return (
     <div>
      <Dialog open={openModal}  aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+        <DialogTitle id="form-dialog-title">Edit</DialogTitle>
         <DialogContent>
-          
           <TextField
             autoFocus
             onChange={(e) => setEditedPost({id: modalPost.id, text: e.target.value})}
@@ -31,7 +30,7 @@ function Modal() {
             Cancel
           </Button>
           <Button onClick={()=> editPost(editedPost, modalPost.index)} color="primary">
-            Edit
+            Done
           </Button>
         </DialogActions>
       </Dialog>
