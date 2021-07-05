@@ -1,6 +1,6 @@
 {
   "homepage": "https://mateusasferreira.github.io/react-crud",
-  "name": "react-crud",
+  "name": "react-crud-with-hooks",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
