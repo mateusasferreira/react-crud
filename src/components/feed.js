@@ -19,12 +19,14 @@ function Feed() {
 
   const classes = useStyles()
 
+  
+
   return (
     <List>
       {posts.map((post, index) => (
           <ListItem className={classes.post} key={index}>
               <ListItemText >{post.text}</ListItemText>
-              <Button onClick={()=> deletePost(post.id)} variant="contained" color="secondary">Delete</Button>
+              <Button onClick={()=> deletePost(post)} variant="contained" color="secondary">Delete</Button>
               <Button onClick={()=> toggleModal(post, index)} variant="contained" color="default">Edit</Button>
           </ListItem>
       ))}

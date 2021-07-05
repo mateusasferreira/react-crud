@@ -16,7 +16,7 @@ function Modal() {
         <DialogContent>
           <TextField
             autoFocus
-            onChange={(e) => setEditedPost({id: modalPost.id, text: e.target.value})}
+            onChange={(e) => setEditedPost({id: modalPost.id, text: e.target.value, index: modalPost.index})}
             id="outlined-multiline-static"
             defaultValue={modalPost.text}
             multiline
@@ -29,7 +29,7 @@ function Modal() {
           <Button onClick={toggleModal} color="primary">
             Cancel
           </Button>
-          <Button onClick={()=> editPost(editedPost, modalPost.index)} color="primary">
+          <Button onClick={()=> editPost(editedPost)} color="primary">
             Done
           </Button>
         </DialogActions>

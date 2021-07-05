@@ -1,32 +1,35 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useReducer } from "react";
 import {v4 as uuid} from 'uuid'
 
+import {postsReducer} from '../reducers/postsReducer'
 
 const PostContext = createContext({})
 
 export function PostsContextProvider({children}){
-    const [posts, setPosts] = useState([])
+
+    const [posts, postsDispatch] = useReducer(postsReducer, [])
     const [openModal, setOpenModal] = useState(false)
     const [modalPost, setModalPost] = useState({})
 
+    
 
     function addPost (postText){
         const newPost = {
             text: postText,
             id: uuid()
         }
-        setPosts([...posts, newPost])
+        postsDispatch({type: 'ADD_POST', newPost})
+        console.log(posts)
     }
 
-    function deletePost (id) {
-               
-        setPosts(posts.filter(post => post.id !== id))
-        posts.forEach(post => console.log(post.id))
+    function deletePost (deletedPost) {
+        postsDispatch({type: 'DELETE_POST', deletedPost})          
+     
     }
 
-    function editPost(editedPost, index){
+    function editPost(editedPost){
         setOpenModal(!openModal)
-        const newPostsArray = posts.splice(index, 1, editedPost)
+        postsDispatch({type: 'EDIT_POST', editedPost})
     }
 
     const toggleModal = (post, index) => {
