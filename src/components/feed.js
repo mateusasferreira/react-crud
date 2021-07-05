@@ -23,7 +23,7 @@ function Feed() {
 
   return (
     <List>
-      {posts.map((post, index) => (
+      {posts && posts.map((post, index) => (
           <ListItem className={classes.post} key={index}>
               <ListItemText >{post.text}</ListItemText>
               <Button onClick={()=> deletePost(post)} variant="contained" color="secondary">Delete</Button>

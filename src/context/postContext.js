@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useReducer } from "react";
+import { createContext, useState, useContext, useReducer, useEffect } from "react";
 import {v4 as uuid} from 'uuid'
 
 import {postsReducer} from '../reducers/postsReducer'
@@ -10,8 +10,7 @@ export function PostsContextProvider({children}){
     const [posts, postsDispatch] = useReducer(postsReducer, [])
     const [openModal, setOpenModal] = useState(false)
     const [modalPost, setModalPost] = useState({})
-
-    
+   
 
     function addPost (postText){
         const newPost = {
@@ -36,6 +35,21 @@ export function PostsContextProvider({children}){
         setOpenModal(!openModal)   
         setModalPost({...post, index: index})     
     }
+
+    useEffect(()=>{
+        let storagePosts
+        try {
+            storagePosts = JSON.parse(localStorage.getItem('posts')) || "[]"
+        } catch(err) {
+            console.error(err)
+            storagePosts = []
+        }
+        postsDispatch({type: 'GET_POSTS', storagePosts})
+    }, [])
+
+    useEffect(()=>{
+        localStorage.setItem('posts', JSON.stringify(posts))
+    }, [posts])
 
     return(
         <PostContext.Provider value={{
