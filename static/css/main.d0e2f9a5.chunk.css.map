@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,KACE,SAAU,CACV,gBACF,CAEA,oCACE,KACE,SACF,CACF","file":"main.d0e2f9a5.chunk.css","sourcesContent":[".App {\n  width: 95%;\n  margin: 10vh auto;\n}\n\n@media screen and (min-width: 768px) {\n  .App {\n    width: 70%;\n  }  \n}\n"]}
