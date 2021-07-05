@@ -20,9 +20,7 @@ function PostsForm() {
   const classes = useStyles()
 
   const handlePost = () => {
-      
       addPost(postText)
-
       setPostText('')
   }
 

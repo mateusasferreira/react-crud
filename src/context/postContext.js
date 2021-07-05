@@ -12,21 +12,17 @@ export function PostsContextProvider({children}){
     const [modalPost, setModalPost] = useState({})
    
 
-    function addPost (postText){
+    const addPost = postText =>{
         const newPost = {
             text: postText,
             id: uuid()
         }
         postsDispatch({type: 'ADD_POST', newPost})
-        console.log(posts)
     }
 
-    function deletePost (deletedPost) {
-        postsDispatch({type: 'DELETE_POST', deletedPost})          
-     
-    }
+    const deletePost = deletedPost => postsDispatch({type: 'DELETE_POST', deletedPost})          
 
-    function editPost(editedPost){
+    const editPost = editedPost => {
         setOpenModal(!openModal)
         postsDispatch({type: 'EDIT_POST', editedPost})
     }

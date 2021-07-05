@@ -19,8 +19,6 @@ function Feed() {
 
   const classes = useStyles()
 
-  
-
   return (
     <List>
       {posts && posts.map((post, index) => (
